@@ -1,0 +1,27 @@
+dist: xenial
+language: python
+python: '3.7'
+services:
+  - postgresql
+
+env:
+  global:
+    - DB_ENGINE=postgresql
+    - DB_HOST=localhost
+    - DB_PORT=5432
+    - DB_NAME=fizzbuzz
+    - DB_USER=postgres
+    - DB_PASSWORD=postgres
+
+install:
+- pip install pipenv
+- pipenv install --dev --system
+
+before_script:
+  - psql -c "CREATE DATABASE fizzbuzz;" -U postgres
+  - alembic upgrade head
+
+script:
+  - black --check .
+  - pytest --cov=service tests/
+

@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+
+  fizz-buzz: &app
+    tty: true
+    build:
+      context: .
+      args:
+        INSTALL_ARGS: '--dev'
+    container_name: fizz-buzz
+    environment:
+      # use in code
+      - DEBUG=True
+      - MAX_LIMIT=100
+      - DB_ENGINE=postgresql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=postgres
+    restart: always
+    volumes:
+      - .:/fizz-buzz:delegated
+    depends_on:
+      - db
+
+    ports:
+      - 8080:8080
+    command: python -m service
+
+  db:
+      image: postgres:10
+      container_name: fizz-buzz-db
+      environment:
+          - POSTGRES_USER=postgres
+          - POSTGRES_PASSWORD=postgres
+          - POSTGRES_DB=postgres
+      ports:
+          - 5432:5432
+  test:
+    <<: *app
+    container_name: fizz-buzz-test
+    restart: "no"
+    ports:
+      - 8082:8082
+    command: pytest --cov=service tests/

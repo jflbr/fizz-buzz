@@ -1,0 +1,152 @@
+swagger: "2.0"
+
+info:
+  description: "API documentation for a Simple REST Fizz-Buzz project."
+  version: "1.0"
+  title: "Fizz-Buzz"
+  contact:
+    email: "github/jflbr"
+produces:
+  - "application/json"
+consumes:
+  - "application/json"
+basePath: "/"
+
+
+definitions:
+  FizzBuzzRequest:
+    type: "object"
+    required:
+      - int1
+      - int2
+      - limit
+      - str1
+      - str2
+      - hits
+    properties:
+      int1:
+        type: "integer"
+        example: 3
+      int2:
+        type: "integer"
+        example: 7
+      limit:
+        type: "integer"
+        example: 50
+      str1:
+        type: "string"
+        example: "fizz"
+      str2:
+        type: "string"
+        example: "buzz"
+
+  FizzBuzzStatisticsResponse:
+    type: "object"
+    required:
+      - most_frequent
+    properties:
+      most_frequent:
+        schema:
+          $ref: '#/definitions/FizzBuzzStatisticsResponseInner'
+  
+  FizzBuzzStatisticsResponseInner:
+    type: "object"
+    required:
+      - int1
+      - int2
+      - limit
+      - str1
+      - str2
+      - hits
+    properties:
+      int1:
+        type: "integer"
+        example: 3
+      int2:
+        type: "integer"
+        example: 7
+      limit:
+        type: "integer"
+        example: 50
+      str1:
+        type: "string"
+        example: "fizz"
+      str2:
+        type: "string"
+        example: "buzz"
+      hits:
+        type: "integer"
+        example: 130
+
+  PingResponse:
+    type: "object"
+    required:
+      - "status"
+      - "version"
+    properties:
+      status:
+        type: "string"
+        example: "ok"
+      version:
+        type: "string"
+        example: "latest"
+
+
+paths:
+  /api/1/ping:
+    get:
+      tags:
+        - "Ping"
+      summary: "Service's healthcheck"
+      description: "Return the status of the service"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "An array of examples"
+          schema:
+            $ref: "#/definitions/PingResponse"
+
+  /api/1/fizz-buzz/:
+    post:
+      tags:
+        - "FizzBuzz"
+      summary: "Return an array of fizz-buzz strings"
+      description: "Returns a list of strings with numbers from 1 to limit, where: all multiples of int1 are replaced by str1, all multiples of int2 are replaced by str2, all multiples of int1 and int2 are replaced by str1str2."
+      operationId: "processFizzBuzz"
+      produces:
+        - "application/json"
+      parameters:
+        - in: body
+          name: fizz-buzz
+          description: The fizz-buzz to process
+          schema:
+            $ref: '#/definitions/FizzBuzzRequest'
+      responses:
+        "201":
+          description: "An array of fizz-buzz strings"
+          schema:
+            type: array
+            items:
+              oneOf:
+                - type: string
+                - type: integer
+          examples:
+            - "fizz"
+            - "buzz"
+            - 3
+
+  /api/1/fizz-buzz/statistics/:
+    get:
+      tags:
+      - "FizzBuzz"
+      summary: "Return the most frequent fizz-buzz request"
+      description: "Return the parameters corresponding to the most used request, as well as the number of hits for this request"
+      produces:
+      - "application/json"
+      parameters:
+      responses:
+        "200":
+          description: "Most frequent Fizz-Buzz"
+          schema:
+            $ref: "#/definitions/FizzBuzzStatisticsResponse"
