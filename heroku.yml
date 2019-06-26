@@ -1,0 +1,9 @@
+build:
+  docker:
+    web: Dockerfile
+run: 
+  web: python -m service
+  worker:
+    command: 
+      - alembic upgrade head
+    image: web
