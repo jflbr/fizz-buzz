@@ -2,26 +2,29 @@ dist: xenial
 language: python
 python: '3.7'
 services:
-  - postgresql
-
+- postgresql
 env:
   global:
-    - DB_ENGINE=postgresql
-    - DB_HOST=localhost
-    - DB_PORT=5432
-    - DB_NAME=fizzbuzz
-    - DB_USER=postgres
-    - DB_PASSWORD=postgres
-
+  - DB_ENGINE=postgresql
+  - DB_HOST=localhost
+  - DB_PORT=5432
+  - DB_NAME=fizzbuzz
+  - DB_USER=postgres
+  - DB_PASSWORD=postgres
 install:
 - pip install pipenv
 - pipenv install --dev --system
-
 before_script:
-  - psql -c "CREATE DATABASE fizzbuzz;" -U postgres
-  - alembic upgrade head
-
+- psql -c "CREATE DATABASE fizzbuzz;" -U postgres
+- alembic upgrade head
 script:
-  - black --check .
-  - pytest --cov=service tests/
-
+- black --check .
+- pytest --cov=service tests/
+deploy:
+  provider: heroku
+  api_key:
+    secure: ESL/RrInB2AKdUX4l8fCKS01aZ0CdU51GhSnuF5zUHL6k1lXGdMAmy30mS3jOkITummD33vImPkBjn53KrFeunXic1d/H82j7uNf6HubZ4w2KzeNJfE792uLlAbEVX0jhh8PgeOmyG9ajsLo8ZdgDyaB8oQsXorSOIX6GVhgGACuzfSFiPQcfmnPxbgfaiC8+FGjgcq5HuHz2t/gk7KsHP1yj8vVXLGbawozHHjhjldY35dMNn77UbEn3UTJUp8mDZcXMEv2RedfxENcvcrm9ZRfe7VN6DK3+eYKkWLbSNVigKbLEtigu/KnOzuqGrLr2lNs9oXz7f0FxN9EcBDRpap0tykEegCmtzo0SKUpZHZ0wpPkspmp2ia7RUQmmYyaNs6yGLlu0bY7iBAd4Ns009Gf275PwHDtKYgnycb3Jc5tv6C9fvY+uJLcM8mNCC0iGHbREXniJjFzT2SeYp37mgCU79AH9I8B+zA9rmAfWdVRJZTO79UymJhPcUVu7acQBT5hlQBA2dYbhR+cJotDPhqWURFFo3AwM3h8//o7BEJWEZrjmvI/2Gsu7tfJ9kowUdi23Sr9Qju9GD79s7ImbIBofgXNIHfuyFF6ZlbFgPLWG+8tOeS+2GckZIJwpZNkOME+okKR4uGaMHsJNr9GMH/vruwfqJbFaXejhP88GVI=
+  app: rest-fizz-buzz
+  on:
+    repo: jflbr/fizz-buzz
+    branch: master
