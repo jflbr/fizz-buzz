@@ -1,0 +1,33 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pycodestyle = "*"
+# pylint = "*"
+coverage = "*"
+pytest = "*"
+pytest-aiohttp = "*"
+pytest-cov = "*"
+pytest-xdist = "*"
+pytest-sugar = "*"
+swagger-conformance = "*"
+flake8 = "*"
+black = "==18.9b0"
+
+[packages]
+aiohttp = "*"
+alembic = "*"
+asyncpg = "*"
+async-timeout = "*"
+cerberus = "*"
+jsonschema = "*"
+pyyaml = "*"
+psycopg2-binary = "*"
+uvloop = "*"
+aiohttp-swagger = "*"
+
+
+[requires]
+python_version = "3.7"

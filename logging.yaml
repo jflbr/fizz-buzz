@@ -1,0 +1,40 @@
+# use with: logging.config.dictConfig(yaml.load(open('logging.yaml', 'r')))
+# Formatters detailed here: http://docs.python.org/2/library/logging.html#logrecord-attributes
+version: 1
+
+root:
+  level: DEBUG
+  handlers: [console]
+
+
+formatters:
+  simple:
+    format: '%(name)s:%(levelname)s:  %(message)s'
+
+  detail:
+    format: '%(asctime)s %(name)s %(levelname)s %(filename)s:%(funcName)s():%(lineno)d %(message)s'
+    datefmt: '%Y/%m/%d %H:%M:%S'
+
+loggers:
+  fizz-buzz:
+    level: DEBUG
+    qualname: fizz-buzz
+    handlers: [console]
+    propagate: false
+
+  aiohttp.access:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+  aiohttp.server:
+    level: DEBUG
+    handlers: [console]
+    propagate: false
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: detail
+    stream: ext://sys.stdout
+

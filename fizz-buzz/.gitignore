@@ -1,0 +1,16 @@
+*.pyc
+*.swp
+.hypothesis
+.idea
+.vagrant
+.cache
+.coverage
+.pytest_cache
+venv
+htmlcov/
+bootstrap.retry
+s3
+.tox
+.scannerwork
+.vscode/
+

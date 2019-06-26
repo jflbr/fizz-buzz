@@ -1,0 +1,10 @@
+aiobotocore 
+aiohttp 
+alembic 
+asyncpg 
+async-timeout
+cerberus
+jsonschema
+pyyaml
+psycopg2-binary
+uvloop
