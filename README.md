@@ -1,6 +1,6 @@
 # Fizz-Buzz
 
-[![Build Status](https://travis-ci.com/jflbr/fizz-buzz.svg?branch=master)](https://travis-ci.com/jflbr/fizz-buzz)
+[![Build Status](https://travis-ci.org/jflbr/fizz-buzz.svg?branch=master)](https://travis-ci.com/jflbr/fizz-buzz)
 
 A simple fizz-buzz REST server
 
