@@ -27,3 +27,4 @@ deploy:
   app: rest-fizz-buzz
   on:
     repo: jflbr/fizz-buzz
+    branch: master
