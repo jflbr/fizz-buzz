@@ -96,7 +96,7 @@ paths:
   /api/1/ping:
     get:
       tags:
-        - "Ping"
+        - "Health"
       summary: "Service's healthcheck"
       description: "Return the status of the service"
       produces:

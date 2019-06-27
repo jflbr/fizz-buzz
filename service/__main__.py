@@ -1,6 +1,3 @@
-"""
-APK Manager.
-"""
 import logging
 from logging import config
 from pathlib import Path, PurePath

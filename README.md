@@ -2,36 +2,18 @@
 
 [![Build Status](https://travis-ci.org/jflbr/fizz-buzz.svg?branch=master)](https://travis-ci.com/jflbr/fizz-buzz)
 
-A simple fizz-buzz REST server
+A simple fizz-buzz REST server implementation.
 
 
-## Build docker image
-```bash
-docker build -t fizz-buzz:latest [--build-arg INSTALL_ARGS=--dev] .
-```
+## Getting Started
 
-## Run all the tests using docker-compose
-```bash
-docker-compose build test
-docker-compose run test
-```
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-You can run specific test modules as follows:
-```bash
-docker-compose run --rm test pytest --cov=service tests/interface/test_fizzbuzz_statistics.py
-```
+### Prerequisites
 
-Or even single test case:
-```bash
-docker-compose run --rm test pytest --cov=service tests/interface/test_fizzbuzz_statistics.py::test_empty_fizzbuzz_statistics
-```
+In order to get the development environment up and running you need to have docker and docker-compose installed. Following example is taken from the official documentation for Ubuntu.
+You can find a detailed list of instructions in the [officatial documentation page](https://docs.docker.com/install/) depending on your OS and distribution.
 
-## Run the application using docker compose
-
-```bash
-docker-compose build fizz-buzz
-docker-compose run fizz-buzz
-```
 
 ## OpenAPI documentation
 
