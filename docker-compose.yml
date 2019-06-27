@@ -38,6 +38,12 @@ services:
           - POSTGRES_DB=postgres
       ports:
           - 5432:5432
+  migrate:
+    <<: *app
+    container_name: fizz-buzz-migrations
+    restart: "no"
+    command: alembic upgrade head
+
   test:
     <<: *app
     container_name: fizz-buzz-test
