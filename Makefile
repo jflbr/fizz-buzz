@@ -1,9 +1,9 @@
     
 run:
-	@python -m service
+	python -m service
 
 migrate:
-	@alembic upgrade --heads
+	alembic upgrade --heads
 
 test:
 	py.test tests
@@ -11,8 +11,11 @@ test:
 check:
 	flake8
 
+black-check:
+	black --check .
+
 format:
 	black .
 
 coverage:
-	pytest --cov=service tests/units & coverage html
+	pytest --cov=service tests/ & coverage html
