@@ -20,10 +20,6 @@ class DBDriver:
         self.database = configuration.get("database")
         self._connection = None
 
-    async def __call__(self):
-        conn = await self.connection
-        return conn
-
     @property
     async def connection(self) -> asyncpg.connection:
         """Provide a database connection if it exists or create a new one otherwise.
@@ -40,15 +36,6 @@ class DBDriver:
             database=self.database,
         )
         return self._connection
-
-
-async def close_connection(app: Application):
-    """Close database connection.
-    Args:
-        app: aiohttp.web.Application
-
-    """
-    await app["database"].connection.close()
 
 
 def setup_database_connection(app: Application, configuration: dict) -> None:

@@ -75,7 +75,7 @@ class FizzBuzzRepository:
     async def create(
         self, int1: int, int2: int, limit: int, str1: str, str2: str
     ) -> dict:
-        """Get the most requested fizzbuzz inputs.
+        """Get the most requested fizzbuzz input.
 
         Args:
             fizzbuzz_hash(str): Unique identifier of a fizzbuzz input
