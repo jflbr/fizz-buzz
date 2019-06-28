@@ -1,6 +1,6 @@
 # Fizz-Buzz
 
-[![Build Status](https://travis-ci.org/jflbr/fizz-buzz.svg?branch=master)](https://travis-ci.com/jflbr/fizz-buzz)
+[![Build Status](https://travis-ci.org/jflbr/fizz-buzz.svg?branch=master)](https://travis-ci.org/jflbr/fizz-buzz)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 
 
