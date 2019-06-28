@@ -7,13 +7,21 @@
 A simple [fizz-buzz](https://en.wikipedia.org/wiki/Fizz_buzz) REST server implementation.
 
 
+This fizz-buzz implementation exposes a REST API that accepts five parameters: three integers `int1`, `int2` and `limit` and two strings `str1` and `str2`.
+The API returns a list of strings with numbers from `1` to `limit`, where: all multiples of `int1` are replaced by `str1`, all multiples of `int2` are replaced by `str2`, all multiples of `int1` and `int2` are replaced by `str1str2`.
+
+The application also exposes a statistics endpoint allowing users to know what the most frequent request has been.
+
+Take a look at this [working example](https://rest-fizz-buzz.herokuapp.com/api/1/doc) for more details.
+
+
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Prerequisites
 
-In order to get the development environment up and running you need to have docker and docker-compose installed. Following example is taken from the official documentation for Ubuntu.
+In order to get the development environment up and running you need to have docker and docker-compose installed.
 You can find a detailed list of instructions in the [official documentation page](https://docs.docker.com/install/) depending on your OS and distribution.
 
 
