@@ -1,9 +1,6 @@
 """Main module declaring the service's entrypoint."""
 import asyncio
-from logging import (
-    config,
-    getLogger,
-)
+from logging import config, getLogger
 from pathlib import Path, PurePath
 
 from aiohttp import web

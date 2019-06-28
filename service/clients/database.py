@@ -3,8 +3,9 @@ import asyncpg
 from aiohttp.web import Application
 
 
-class DBDriver():
+class DBDriver:
     """Database abstraction driver"""
+
     def __init__(self, configuration: dict):
         """Initialize database abstraction driver.
 

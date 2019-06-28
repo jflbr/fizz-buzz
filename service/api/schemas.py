@@ -29,6 +29,7 @@ FIZZBUZZ_REQUEST_SCHEMA = {
 
 class Validator(CerberusValidator):
     """JSON schema validation class."""
+
     def _validate_is_non_zero(self, is_non_zero, field, value):
         """ Make sure a  given integer is non zero.
         The rule's arguments are validated against this schema:

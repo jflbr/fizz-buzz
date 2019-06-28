@@ -7,8 +7,9 @@ from service.helpers.fizzbuzz import hash_request
 LOGGER = logging.getLogger("fizz-buzz.models.fizzbuzz-repository")
 
 
-class FizzBuzzRepository():
+class FizzBuzzRepository:
     """Persistence layer for fizzbuzz management."""
+
     def __init__(self, database: dict) -> None:
         """Initialization"""
         self.database: dict = database

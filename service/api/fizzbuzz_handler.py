@@ -33,8 +33,8 @@ async def create(request: Request) -> Response:
             reason="invalid_parameters",
         )
 
-    # TODO (fixme): encapsulate the fizzbuzz processing and persistence (fixme)
-    # into a "business" class (fixme)
+    # TODO: encapsulate the fizzbuzz processing and persistence (fixme)
+    # into a "business" class
     processed_fizzbuzz = fizzbuzz(
         request_body["int1"],
         request_body["int2"],
