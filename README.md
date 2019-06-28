@@ -14,7 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 In order to get the development environment up and running you need to have docker and docker-compose installed. Following example is taken from the official documentation for Ubuntu.
-You can find a detailed list of instructions in the [officatial documentation page](https://docs.docker.com/install/) depending on your OS and distribution.
+You can find a detailed list of instructions in the [official documentation page](https://docs.docker.com/install/) depending on your OS and distribution.
 
 
 ### Clone the application repository
