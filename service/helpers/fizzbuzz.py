@@ -1,7 +1,10 @@
+"""Fizzbuzz helpers module."""
 import hashlib
 
 
-def hash_request(int1: int, int2: int, limit: int, str1: str, str2: str) -> str:
+def hash_request(
+    int1: int, int2: int, limit: int, str1: str, str2: str
+) -> str:
     request_string: str = f"{int1}{int2}{limit}{str1}{str2}"
     hash_object = hashlib.sha1(request_string.encode())
     return hash_object.hexdigest()

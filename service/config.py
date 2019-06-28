@@ -6,7 +6,7 @@ import os
 
 # service configuration
 SERVICE_VERSION = os.getenv("SERVICE_VERSION", "")
-SERVICE_PORT = int(os.getenv("PORT", 8080))
+SERVICE_PORT = int(os.getenv("PORT", "8080"))
 
 # database configuration
 DB_ENGINE = os.getenv("DB_ENGINE", "postgresql")
@@ -17,4 +17,4 @@ DB_PASSWORD = os.getenv("DB_PASSWORD", "fizzbuzz")
 DB_NAME = os.getenv("DB_NAME", "fizzbuzz")
 
 # maximum upper bound of a fizzbuzz input
-MAX_LIMIT = int(os.getenv("MAX_LIMIT", 100))
+MAX_LIMIT = int(os.getenv("MAX_LIMIT", "100"))

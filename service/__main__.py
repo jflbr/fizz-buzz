@@ -1,11 +1,13 @@
-import logging
-from logging import config
+"""Main module declaring the service's entrypoint."""
+import asyncio
+from logging import (
+    config,
+    getLogger,
+)
 from pathlib import Path, PurePath
-
 
 from aiohttp import web
 from aiohttp_swagger import setup_swagger
-import asyncio
 import uvloop
 from yaml import safe_load
 
@@ -26,19 +28,31 @@ from service.clients.database import setup_database_connection
 from service.models.repository_configuration import setup_fizzbuzz_repository
 
 
-logging.config.dictConfig(safe_load(open("logging.yaml", "r")))
-logger = logging.getLogger("fizz-buzz")
+config.dictConfig(safe_load(open("logging.yaml", "r")))
+LOGGER = getLogger("fizz-buzz")
 
 
 def main():
-    logger.info("Service Startss")
+    """Run the aiohttp application."""
+    LOGGER.info("Service Startss")
     asyncio.set_event_loop_policy(uvloop.EventLoopPolicy())
     app = create_app(loop=None)
 
     web.run_app(app, port=SERVICE_PORT)
 
 
-def create_app(loop):
+def create_app(loop) -> web.Application:
+    """Create the aiohttp application.
+
+    Declare routes and dependencies setup.
+
+    Args:
+        loop (uvloop.EventLoop): Event loop instance
+
+    Returns:
+        web.Application: Description of return value
+
+    """
     app = web.Application(loop=loop, middlewares=[log_exception_middleware])
     setup_database_connection(
         app,
@@ -55,11 +69,17 @@ def create_app(loop):
 
     here = Path(__file__).parent.absolute()
     swagger_doc_path = str(PurePath(here, "../doc/api.yaml"))
-    setup_swagger(app, swagger_url="/api/1/doc", swagger_from_file=swagger_doc_path)
+    setup_swagger(
+        app, swagger_url="/api/1/doc", swagger_from_file=swagger_doc_path
+    )
 
     app.router.add_routes(
         [
-            web.route(method="get", path="/api/1/ping", handler=ping_handler.get_ping),
+            web.route(
+                method="get",
+                path="/api/1/ping",
+                handler=ping_handler.get_ping,
+            ),
             web.route(
                 method="post",
                 path=r"/api/1/fizz-buzz/",
