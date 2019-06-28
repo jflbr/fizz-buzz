@@ -19,6 +19,8 @@ before_script:
 - alembic upgrade head
 script:
 - black --check .
+- flake8 service/
+- pylint service/
 - pytest --cov=service tests/
 deploy:
   provider: heroku

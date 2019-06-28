@@ -44,7 +44,7 @@ class FizzBuzzRepository:
             fizzbuzz_hash(str): Unique identifier of a fizzbuzz input
             limit(int): Upper bound of the fizzbuz input range
             int1(int): First multiple number of the fizzbuzz input
-            int2(int): Second multple number of the fizzbuzz input 
+            int2(int): Second multple number of the fizzbuzz input
             str1(str): Fizz string
             str2(str): Buzz string
         Returns:
@@ -74,7 +74,7 @@ class FizzBuzzRepository:
 
     async def create(
         self, int1: int, int2: int, limit: int, str1: str, str2: str
-    ):
+    ) -> dict:
         """Get the most requested fizzbuzz inputs.
 
         Args:
