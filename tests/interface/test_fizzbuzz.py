@@ -39,7 +39,8 @@ async def test_missing_int1_fizzbuzz(aiohttp_client):
     client = await aiohttp_client(create_app)
 
     resp = await client.post(
-        "/api/1/fizz-buzz/", json=dict(int2=5, limit=16, str1="fizz", str2="buzz")
+        "/api/1/fizz-buzz/",
+        json=dict(int2=5, limit=16, str1="fizz", str2="buzz"),
     )
 
     assert resp.status == 422

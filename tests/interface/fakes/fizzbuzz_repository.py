@@ -14,7 +14,9 @@ class FizzBuzzRepository(object):
         ):
             self.most_frequent = candidate
 
-    async def create(self, int1: int, int2: int, limit: int, str1: str, str2: str):
+    async def create(
+        self, int1: int, int2: int, limit: int, str1: str, str2: str
+    ):
         fizzbuzz_hash = hash_request(int1, int2, limit, str1, str2)
         if fizzbuzz_hash in self.store:
             self.store[fizzbuzz_hash]["hits"] += 1
